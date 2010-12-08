@@ -3,6 +3,7 @@ package com.uploadedlobster.PwdHash;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,6 +17,7 @@ public class PwdHash extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		getWindow().setLayout(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 
 		mSiteAddress = (EditText) findViewById(R.id.siteAddress);
 		mPassword = (EditText) findViewById(R.id.password);
