@@ -1,7 +1,6 @@
 package com.uploadedlobster.PwdHash;
 
 import android.app.Activity;
-import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.view.View;
@@ -31,16 +30,34 @@ public class PwdHash extends Activity {
 		generateBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String realm = DomainExtractor.extractDomain(mSiteAddress
-						.getText().toString());
-				String password = mPassword.getText().toString();
-
-				if (!realm.equals("") && !password.equals("")) {
-					HashedPassword hashedPassword = new HashedPassword(
-							password, realm);
-					mHashedPassword.setText(hashedPassword.toString());
-				}
+				String hashedPassword = generateHashedPassword();
+				mHashedPassword.setText(hashedPassword);
 			}
 		});
+
+		Button copyBtn = (Button) findViewById(R.id.copyBtn);
+
+		copyBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String hashedPassword = generateHashedPassword();
+				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+				clipboard.setText(hashedPassword);
+				finish();
+			}
+
+		});
+	}
+
+	private String generateHashedPassword() {
+		String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
+				.toString());
+		String password = mPassword.getText().toString();
+
+		if (!realm.equals("") && !password.equals("")) {
+			HashedPassword hashedPassword = new HashedPassword(password, realm);
+			return hashedPassword.toString();
+		}
+		return "";
 	}
 }
