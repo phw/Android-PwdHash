@@ -25,8 +25,10 @@ public class PwdHash extends Activity {
 		generateBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String hashedPassword = mSiteAddress.getText().toString() + mPassword.getText().toString();  
-				mHashedPassword.setText(hashedPassword);
+				String realm = DomainExtractor.extractDomain(mSiteAddress.getText().toString());
+				String password = mPassword.getText().toString();
+				HashedPassword hashedPassword = new HashedPassword(password, realm);
+				mHashedPassword.setText(hashedPassword.toString());
 			}
 		});
 	}
