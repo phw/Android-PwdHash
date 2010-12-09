@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Password Hash</string>
+	<string name="siteAddress">Adresse der Webseite</string>
+	<string name="siteAddressHint">http://example.com</string>
+	<string name="password">Passwort</string>
+	<string name="hashedPassword">Hash-Passwort</string>
+	<string name="generateBtn">Generieren</string>
+	<string name="copyBtn">Kopieren</string>
+	<string name="copiedToClipboardNotification">Das Passwort wurde in die Zwischenablage kopiert.</string>
+</resources>

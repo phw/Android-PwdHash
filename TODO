@@ -11,5 +11,4 @@
 * If URL is preset select password field
 * Generate password on-the-fly and display it whenever text was changed
 * Set copy button inactive when unusable
-* Translation
 * Place Password Hash in notification area for quick access
