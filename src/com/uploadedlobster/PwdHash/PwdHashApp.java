@@ -1,6 +1,7 @@
 package com.uploadedlobster.PwdHash;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.view.View;
@@ -8,8 +9,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class PwdHash extends Activity {
+public class PwdHashApp extends Activity {
 	private EditText mSiteAddress;
 	private EditText mPassword;
 	private TextView mHashedPassword;
@@ -45,10 +47,11 @@ public class PwdHash extends Activity {
 				if (!hashedPassword.equals("")) {
 					ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 					clipboard.setText(hashedPassword);
+					CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
+					showNotification(clipboardNotification);
 					finish();
 				}
 			}
-
 		});
 	}
 
@@ -60,14 +63,19 @@ public class PwdHash extends Activity {
 		if (realm.equals("")) {
 			mSiteAddress.requestFocus();
 			return "";
-		}
-		else if (password.equals("")) {
+		} else if (password.equals("")) {
 			mPassword.requestFocus();
 			return "";
-		}
-		else {
+		} else {
 			HashedPassword hashedPassword = new HashedPassword(password, realm);
 			return hashedPassword.toString();
 		}
+	}
+
+	private void showNotification(CharSequence text) {
+		Context context = getApplicationContext();
+		int duration = Toast.LENGTH_LONG;
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
 	}
 }

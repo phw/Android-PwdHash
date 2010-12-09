@@ -7,4 +7,5 @@
 	<string name="hashedPassword">Hashed password</string>
 	<string name="generateBtn">Generate</string>
 	<string name="copyBtn">Copy</string>
+	<string name="copiedToClipboardNotification">Password copied to clipboard.</string>
 </resources>

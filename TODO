@@ -1,4 +1,4 @@
-* Fix password hash calculation for non-ASCII characters
+* Fix password hash calculation for non-ASCII characters (maybe convert to Unicode code points instead of raw bytes)
 * Fix password hash calculation for 0 and 1 character passwords
 * Support rotation
 * Implement handling of relevant intents (send to)
@@ -6,5 +6,10 @@
 * Allow cleartext password field
 * Better notify user about empty input (flash/animate the TextEdit)
 * Rotation
-* test on Galaxy Tab
+* Test on Galaxy Tab
 * Set source code license
+* If URL is preset select password field
+* Generate password on-the-fly and display it whenever text was changed
+* Set copy button inactive when unusable
+* Translation
+* Place Password Hash in notification area for quick access
