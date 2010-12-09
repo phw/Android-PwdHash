@@ -41,9 +41,12 @@ public class PwdHash extends Activity {
 			@Override
 			public void onClick(View v) {
 				String hashedPassword = generateHashedPassword();
-				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-				clipboard.setText(hashedPassword);
-				finish();
+
+				if (!hashedPassword.equals("")) {
+					ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+					clipboard.setText(hashedPassword);
+					finish();
+				}
 			}
 
 		});
@@ -54,10 +57,17 @@ public class PwdHash extends Activity {
 				.toString());
 		String password = mPassword.getText().toString();
 
-		if (!realm.equals("") && !password.equals("")) {
+		if (realm.equals("")) {
+			mSiteAddress.requestFocus();
+			return "";
+		}
+		else if (password.equals("")) {
+			mPassword.requestFocus();
+			return "";
+		}
+		else {
 			HashedPassword hashedPassword = new HashedPassword(password, realm);
 			return hashedPassword.toString();
 		}
-		return "";
 	}
 }
