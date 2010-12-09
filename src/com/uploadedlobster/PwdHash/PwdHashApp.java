@@ -2,6 +2,7 @@ package com.uploadedlobster.PwdHash;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.view.View;
@@ -27,8 +28,10 @@ public class PwdHashApp extends Activity {
 		mSiteAddress = (EditText) findViewById(R.id.siteAddress);
 		mPassword = (EditText) findViewById(R.id.password);
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
-		Button generateBtn = (Button) findViewById(R.id.generateBtn);
 
+		handleIntents();
+		
+		Button generateBtn = (Button) findViewById(R.id.generateBtn);
 		generateBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -38,7 +41,6 @@ public class PwdHashApp extends Activity {
 		});
 
 		Button copyBtn = (Button) findViewById(R.id.copyBtn);
-
 		copyBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -53,6 +55,18 @@ public class PwdHashApp extends Activity {
 				}
 			}
 		});
+	}
+
+	private void handleIntents() {
+		Intent intent = getIntent();
+		if (intent.getAction().equals(Intent.ACTION_SEND))
+		{
+			String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
+			if (!siteAddress.equals("")) {
+				mSiteAddress.setText(siteAddress);
+				mPassword.requestFocus();
+			}
+		}
 	}
 
 	private String generateHashedPassword() {
