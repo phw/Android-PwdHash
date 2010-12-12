@@ -11,7 +11,7 @@ package com.uploadedlobster.PwdHash;
  * 
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
-public class DomainExtractor {
+public final class DomainExtractor {
 
 	public static String extractDomain(String uri) throws IllegalArgumentException {
 		if (uri == null)

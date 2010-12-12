@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.ClipboardManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
@@ -30,37 +32,12 @@ public class PwdHashApp extends Activity {
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
 
 		handleIntents();
-		
-		Button generateBtn = (Button) findViewById(R.id.generateBtn);
-		generateBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String hashedPassword = generateHashedPassword();
-				mHashedPassword.setText(hashedPassword);
-			}
-		});
-
-		Button copyBtn = (Button) findViewById(R.id.copyBtn);
-		copyBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String hashedPassword = generateHashedPassword();
-
-				if (!hashedPassword.equals("")) {
-					ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-					clipboard.setText(hashedPassword);
-					CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
-					showNotification(clipboardNotification);
-					finish();
-				}
-			}
-		});
+		registerEventListeners();
 	}
 
 	private void handleIntents() {
 		Intent intent = getIntent();
-		if (intent.getAction().equals(Intent.ACTION_SEND))
-		{
+		if (intent.getAction().equals(Intent.ACTION_SEND)) {
 			String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
 			if (!siteAddress.equals("")) {
 				mSiteAddress.setText(siteAddress);
@@ -69,21 +46,65 @@ public class PwdHashApp extends Activity {
 		}
 	}
 
-	private String generateHashedPassword() {
-		String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
-				.toString());
-		String password = mPassword.getText().toString();
+	private void registerEventListeners() {
+		TextWatcher updatePasswordTextWatcher = new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
+						.toString());
+				String password = mPassword.getText().toString();
+				
+				updateHashedPassword(realm, password);
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {}
+			
+			@Override
+			public void afterTextChanged(Editable s) {}
+		};
+		mSiteAddress.addTextChangedListener(updatePasswordTextWatcher);
+		mPassword.addTextChangedListener(updatePasswordTextWatcher);
 
-		if (realm.equals("")) {
-			mSiteAddress.requestFocus();
-			return "";
-		} else if (password.equals("")) {
-			mPassword.requestFocus();
-			return "";
-		} else {
-			HashedPassword hashedPassword = new HashedPassword(password, realm);
-			return hashedPassword.toString();
+		Button copyBtn = (Button) findViewById(R.id.copyBtn);
+		copyBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
+						.toString());
+				String password = mPassword.getText().toString();
+
+				if (realm.equals("")) {
+					mSiteAddress.requestFocus();
+				} else if (password.equals("")) {
+					mPassword.requestFocus();
+				} else {
+					String hashedPassword = updateHashedPassword(realm, password);
+	
+					if (!hashedPassword.equals("")) {
+						ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+						clipboard.setText(hashedPassword);
+						CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
+						showNotification(clipboardNotification);
+						finish();
+					}
+				}
+			}
+		});
+	}
+
+	private String updateHashedPassword(String realm, String password) {
+		String result = "";
+		
+		if (!realm.equals("") && !password.equals("")) {
+			HashedPassword hashedPassword = HashedPassword.create(password, realm);
+			result = hashedPassword.toString();
 		}
+		
+		mHashedPassword.setText(result);
+		return result;
 	}
 
 	private void showNotification(CharSequence text) {

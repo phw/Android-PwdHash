@@ -4,7 +4,7 @@
 	<string name="siteAddress">Site Address</string>
 	<string name="siteAddressHint">http://example.com</string>
 	<string name="password">Password</string>
-	<string name="hashedPassword">Hashed password</string>
+	<string name="hashedPassword">Hash:</string>
 	<string name="generateBtn">Generate</string>
 	<string name="copyBtn">Copy</string>
 	<string name="copiedToClipboardNotification">Password copied to clipboard.</string>

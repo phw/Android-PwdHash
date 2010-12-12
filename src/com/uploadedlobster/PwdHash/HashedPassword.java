@@ -6,7 +6,6 @@ package com.uploadedlobster.PwdHash;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -27,13 +26,14 @@ import android.util.Log;
  * 
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
-public class HashedPassword {
+public final class HashedPassword {
 
 	private static final String HMAC_MD5 = "HmacMD5";
 	private static final String PasswordPrefix = "@@";
 
 	private String mPassword;
 	private String mRealm;
+	private String mHash;
 	private Queue<Character> mExtras;
 
 	/**
@@ -45,13 +45,23 @@ public class HashedPassword {
 	private static Pattern NonAlphanumericMatcher = Pattern
 			.compile("[^a-zA-Z0-9_]");
 
-	public HashedPassword(String password, String realm) {
+	private HashedPassword(String password, String realm) {
 		mPassword = password;
 		mRealm = realm;
 	}
 
+	public static HashedPassword create(String password, String realm) {
+		HashedPassword result = new HashedPassword(password, realm);
+		result.calculateHash();
+		return result;
+	}
+
 	@Override
 	public String toString() {
+		return mHash;
+	}
+
+	private void calculateHash() {
 		byte[] md5 = createHmacMD5(mPassword, mRealm);
 		String hash = Base64.encodeToString(md5, Base64.NO_PADDING
 				| Base64.NO_WRAP);
@@ -59,8 +69,7 @@ public class HashedPassword {
 		boolean nonAlphanumeric = NonAlphanumericMatcher.matcher(mPassword)
 				.find();
 
-		String result = applyConstraints(hash, size, nonAlphanumeric);
-		return result;
+		mHash = applyConstraints(hash, size, nonAlphanumeric);
 	}
 
 	private static byte[] createHmacMD5(String key, String data) {
