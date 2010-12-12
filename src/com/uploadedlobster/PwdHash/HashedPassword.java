@@ -3,6 +3,7 @@
  */
 package com.uploadedlobster.PwdHash;
 
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -12,8 +13,6 @@ import java.util.regex.Pattern;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.http.util.EncodingUtils;
 
 import android.util.Base64;
 import android.util.Log;
@@ -35,7 +34,15 @@ public class HashedPassword {
 	private String mPassword;
 	private String mRealm;
 	private Queue<Character> mExtras;
-	private Pattern NonAlphanumericMatcher = Pattern.compile("\\W");
+
+	/**
+	 * Pattern to match only word characters. Since Java's regex implementation
+	 * is unicode aware, the pattern \W would match also non-ASCII word
+	 * characters. But since the JavaScript implementation of PwdHash only
+	 * considers ASCII characters we stay compatible.
+	 */
+	private static Pattern NonAlphanumericMatcher = Pattern
+			.compile("[^a-zA-Z0-9_]");
 
 	public HashedPassword(String password, String realm) {
 		mPassword = password;
@@ -44,7 +51,6 @@ public class HashedPassword {
 
 	@Override
 	public String toString() {
-		// String hash = Base64.encodeToString(input, flags);
 		byte[] md5 = createHmacMD5(mPassword, mRealm);
 		String hash = Base64.encodeToString(md5, Base64.NO_PADDING
 				| Base64.NO_WRAP);
@@ -57,7 +63,10 @@ public class HashedPassword {
 	}
 
 	private static byte[] createHmacMD5(String key, String data) {
-		Key sk = new SecretKeySpec(EncodingUtils.getAsciiBytes(key), HMAC_MD5);
+		byte[] keyBytes = encodeStringToBytes(key);
+		byte[] dataBytes = encodeStringToBytes(data);
+
+		Key sk = new SecretKeySpec(keyBytes, HMAC_MD5);
 
 		Mac mac = null;
 		try {
@@ -66,19 +75,63 @@ public class HashedPassword {
 		} catch (NoSuchAlgorithmException e) {
 			Log.e(HashedPassword.class.getName(),
 					"HMAC_MD5 algorithm not supported on this platform.", e);
+			return new byte[0];
 		} catch (InvalidKeyException e) {
 			Log.e(HashedPassword.class.getName(), "Invalid secret key.", e);
+			return new byte[0];
 		}
 
-		return mac.doFinal(EncodingUtils.getAsciiBytes(data));
+		return mac.doFinal(dataBytes);
+	}
+
+	/**
+	 * Returns a new byte array with the encoded input string (1 byte per
+	 * character).
+	 * 
+	 * Characters in the Latin 1 range (up to code point 255) will be returned
+	 * as Latin 1 encoded bytes. Characters above code point 255 will be
+	 * UTF-16le encoded but only the first byte will be used.
+	 * 
+	 * This matches the original behavior of the PwdHash JavaScript
+	 * implementation pwdhash.com and keeps the hash values of passwords
+	 * containing non-latin-1 characters compatible.
+	 * 
+	 * @param data
+	 * @return Byte array.
+	 */
+	private static byte[] encodeStringToBytes(String data) {
+		byte[] bytes = new byte[data.length()];
+
+		for (int i = 0; i < data.length(); i++) {
+			Integer codePoint = new Integer(data.codePointAt(i));
+
+			if (codePoint <= 255)
+				bytes[i] = codePoint.byteValue();
+			else {
+				try {
+					String nonLatin1Char = Character.toString(data.charAt(i));
+					byte[] charBytes = nonLatin1Char.getBytes("UTF-16le");
+					short unsignedByte = (short) (0x000000FF & ((int) charBytes[0]));
+					bytes[i] = (byte) unsignedByte;
+				} catch (UnsupportedEncodingException e) {
+					Log.w("Decoding error", Character.toString(data.charAt(i))
+							+ " could not be decoded as UTF-16le");
+					bytes[i] = 0x1A; // SUB
+				}
+			}
+		}
+
+		return bytes;
 	}
 
 	private String applyConstraints(String hash, int size,
 			boolean nonAlphanumeric) {
 		int startingSize = size - 4;
-		String result = startingSize > hash.length() ? hash : hash.substring(0, startingSize);
+		String result = startingSize > hash.length() ? hash : hash.substring(0,
+				startingSize);
 		mExtras = new LinkedList<Character>();
-		int extraStart = startingSize > hash.length() ? hash.length() : startingSize;
+		int extraStart = startingSize > hash.length() ? hash.length()
+				: startingSize;
 		for (char c : hash.substring(extraStart).toCharArray()) {
 			mExtras.add(c);
 		}
@@ -95,7 +148,8 @@ public class HashedPassword {
 		while (NonAlphanumericMatcher.matcher(result).find()
 				&& !nonAlphanumeric) {
 			String replacement = Character.toString(nextBetween('A', 26));
-			result = NonAlphanumericMatcher.matcher(result).replaceFirst(replacement);
+			result = NonAlphanumericMatcher.matcher(result).replaceFirst(
+					replacement);
 		}
 
 		// Rotate the result to make it harder to guess the inserted locations

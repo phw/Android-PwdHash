@@ -24,6 +24,12 @@ public class HashedPasswordTest extends AndroidTestCase {
 		assertEquals("r9qeSjv+lwJ", hashedPassword.toString());
 	}
 	
+	public void testToStringWithNonLatin1Chars() {
+		HashedPassword hashedPassword = new HashedPassword("中文العربي",
+				"example.com");
+		assertEquals("AwMz3+BdMT", hashedPassword.toString());
+	}
+	
 	public void testToStringWithoutNonAlphanumeric() {
 		HashedPassword hashedPassword = new HashedPassword("my53cret",
 				"example.com");
