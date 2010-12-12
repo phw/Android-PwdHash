@@ -43,7 +43,6 @@ public class DomainExtractorTest extends AndroidTestCase {
 	}
 
 	public void testExtractDomainWithNullInput() {
-
 		try {
 			DomainExtractor.extractDomain(null);
 			assert (false);

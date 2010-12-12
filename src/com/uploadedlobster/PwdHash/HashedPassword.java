@@ -6,6 +6,7 @@ package com.uploadedlobster.PwdHash;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -63,15 +64,20 @@ public class HashedPassword {
 	}
 
 	private static byte[] createHmacMD5(String key, String data) {
+		if (key == null || key.equals(""))
+			throw new IllegalArgumentException("key must not be null or empty");
+		if (data == null)
+			throw new IllegalArgumentException("data must not be null");
+
 		byte[] keyBytes = encodeStringToBytes(key);
 		byte[] dataBytes = encodeStringToBytes(data);
-
-		Key sk = new SecretKeySpec(keyBytes, HMAC_MD5);
 
 		Mac mac = null;
 		try {
 			mac = Mac.getInstance(HMAC_MD5);
+			Key sk = new SecretKeySpec(keyBytes, HMAC_MD5);
 			mac.init(sk);
+			return mac.doFinal(dataBytes);
 		} catch (NoSuchAlgorithmException e) {
 			Log.e(HashedPassword.class.getName(),
 					"HMAC_MD5 algorithm not supported on this platform.", e);
@@ -80,8 +86,6 @@ public class HashedPassword {
 			Log.e(HashedPassword.class.getName(), "Invalid secret key.", e);
 			return new byte[0];
 		}
-
-		return mac.doFinal(dataBytes);
 	}
 
 	/**
@@ -94,7 +98,7 @@ public class HashedPassword {
 	 * 
 	 * This matches the original behavior of the PwdHash JavaScript
 	 * implementation pwdhash.com and keeps the hash values of passwords
-	 * containing non-latin-1 characters compatible.
+	 * containing non-latin1 characters compatible.
 	 * 
 	 * @param data
 	 * @return Byte array.
@@ -127,12 +131,14 @@ public class HashedPassword {
 	private String applyConstraints(String hash, int size,
 			boolean nonAlphanumeric) {
 		int startingSize = size - 4;
-		String result = startingSize > hash.length() ? hash : hash.substring(0,
-				startingSize);
+		if (startingSize < 0)
+			startingSize = 0;
+		else if (startingSize > hash.length())
+			startingSize = hash.length();
+
+		String result = hash.substring(0, startingSize);
 		mExtras = new LinkedList<Character>();
-		int extraStart = startingSize > hash.length() ? hash.length()
-				: startingSize;
-		for (char c : hash.substring(extraStart).toCharArray()) {
+		for (char c : hash.substring(startingSize).toCharArray()) {
 			mExtras.add(c);
 		}
 
