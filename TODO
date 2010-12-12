@@ -4,6 +4,5 @@
 * Better notify user about empty input (flash/animate the TextEdit)
 * Rotation
 * Test on Galaxy Tab
-* Set source code license
 * Set copy button inactive when unusable
 * Place Password Hash in notification area for quick access
