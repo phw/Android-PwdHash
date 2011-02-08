@@ -1,3 +1,10 @@
+2011-02-08  Philipp Wolfer  <ph.wolfer@googlemail.com>
+
+	* Release 1.1
+	* Use density independent pixels
+	* Set copy button inactive when unusable
+	* Limit window width on large screens
+
 2010-12-12  Philipp Wolfer  <ph.wolfer@googlemail.com>
 
 	* Initial release 1.0

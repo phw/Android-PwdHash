@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Password Hash</string>
+	<string name="app_description">Leichtgewichtiges Tool zum Erzeugen von diebstahlsicheren Passwörtern. Password Hash kann einfach über die "Seitenlink weiterleiten" Option im Browser oder direkt gestartet werden. Kompatibel mit pwdhash.com.
+
+Diese App ist freie Software, die unter einer Open-Source-Lizenz bereitgestellt wird.</string>
 	<string name="siteAddress">Adresse der Webseite</string>
 	<string name="siteAddressHint">http://example.com</string>
 	<string name="password">Passwort</string>
