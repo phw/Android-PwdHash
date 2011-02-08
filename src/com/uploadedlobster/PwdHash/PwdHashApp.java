@@ -55,6 +55,7 @@ public class PwdHashApp extends Activity {
 	private EditText mSiteAddress;
 	private EditText mPassword;
 	private TextView mHashedPassword;
+	private Button mCopyBtn;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -67,6 +68,7 @@ public class PwdHashApp extends Activity {
 		mSiteAddress = (EditText) findViewById(R.id.siteAddress);
 		mPassword = (EditText) findViewById(R.id.password);
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
+		mCopyBtn = (Button) findViewById(R.id.copyBtn);
 
 		handleIntents();
 		registerEventListeners();
@@ -105,8 +107,7 @@ public class PwdHashApp extends Activity {
 		mSiteAddress.addTextChangedListener(updatePasswordTextWatcher);
 		mPassword.addTextChangedListener(updatePasswordTextWatcher);
 
-		Button copyBtn = (Button) findViewById(R.id.copyBtn);
-		copyBtn.setOnClickListener(new View.OnClickListener() {
+		mCopyBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
@@ -139,6 +140,11 @@ public class PwdHashApp extends Activity {
 			HashedPassword hashedPassword = HashedPassword.create(password, realm);
 			result = hashedPassword.toString();
 		}
+		
+		if (result.equals(""))
+			mCopyBtn.setEnabled(false);
+		else
+			mCopyBtn.setEnabled(true);
 		
 		mHashedPassword.setText(result);
 		return result;

@@ -1,7 +1,5 @@
-* Support rotation
 * Copy to clipboard and open browser
 * Allow cleartext password field
 * Better notify user about empty input (flash/animate the TextEdit)
 * Limit max. width on large screens (e.g. Galaxy Tab)
-* Set copy button inactive when unusable
 * Place Password Hash in notification area for quick access
