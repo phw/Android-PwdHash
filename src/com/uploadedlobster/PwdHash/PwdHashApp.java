@@ -40,8 +40,10 @@ import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -62,16 +64,29 @@ public class PwdHashApp extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		getWindow().setLayout(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT);
 
 		mSiteAddress = (EditText) findViewById(R.id.siteAddress);
 		mPassword = (EditText) findViewById(R.id.password);
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
 		mCopyBtn = (Button) findViewById(R.id.copyBtn);
 
+		setWindowGeometry();
 		handleIntents();
 		registerEventListeners();
+	}
+
+	private void setWindowGeometry() {
+		Window window = getWindow();
+		window.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+		int maxWidth = getResources().getDimensionPixelSize(
+				R.dimen.maxWindowWidth);
+
+		if (metrics.widthPixels > maxWidth) {
+			window.setLayout(maxWidth, LayoutParams.WRAP_CONTENT);
+		}
 	}
 
 	private void handleIntents() {

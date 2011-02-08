@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:paddingLeft="12dip"
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="wrap_content" android:paddingLeft="12dip"
 	android:paddingRight="12dip" android:paddingBottom="12dip">
 
-	<TextView android:layout_width="fill_parent"
+	<TextView android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:text="@string/siteAddress" />
-	<EditText android:id="@+id/siteAddress" android:layout_width="fill_parent"
+	<EditText android:id="@+id/siteAddress" android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:hint="@string/siteAddressHint"
 		android:inputType="textUri" />
 
-	<TextView android:layout_width="fill_parent"
+	<TextView android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:text="@string/password" />
-	<EditText android:id="@+id/password" android:layout_width="fill_parent"
+	<EditText android:id="@+id/password" android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:inputType="textPassword" />
 
 	<LinearLayout android:orientation="horizontal"
-		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		android:layout_width="match_parent" android:layout_height="wrap_content">
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:text="@string/hashedPassword"
 			android:paddingRight="4dip" />
@@ -25,7 +25,7 @@
 	</LinearLayout>
 
 	<LinearLayout android:orientation="horizontal"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:layout_height="wrap_content"
 		android:paddingTop="4dip">
 
 		<Button android:text="@string/copyBtn" android:id="@+id/copyBtn"
