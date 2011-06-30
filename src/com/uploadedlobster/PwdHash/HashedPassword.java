@@ -197,6 +197,14 @@ public final class HashedPassword {
 					replacement);
 		}
 
+		// For long passwords (about > 22 chars) the password might be longer
+		// than the hash and mExtras is empty. In that case the constraints
+		// above produce 0 bytes at the end of result. If nonAlphanumeric is not
+		// set those 0 bytes are replaced, but in other cases they stay around
+		// and must be removed here. This is a flaw in the original algorithm
+		// which we have to work around here.
+		result = result.replace("\0", "");
+
 		// Rotate the result to make it harder to guess the inserted locations
 		return rotate(result, nextExtra());
 	}

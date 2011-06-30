@@ -48,6 +48,17 @@ public class HashedPasswordTest extends AndroidTestCase {
 		assertEquals("9FBo", hashedPassword.toString());
 	}
 
+	public void testToStringWithLongSecret() {
+		HashedPassword hashedPassword = HashedPassword.create(
+				"abcdefghijklmnopqrstuvwxyz0123456789=", "example.com");
+		String result = hashedPassword.toString();
+
+		// The original algorithm appends NULL bytes at the end.
+		// Those bytes should not be part of the output.
+		// "XO3u58jVa1nd+8qd08SDIQ\0\0\0\0"
+		assertEquals("XO3u58jVa1nd+8qd08SDIQ", result);
+	}
+
 	public void testToStringWithEmptySecret() {
 		try {
 			HashedPassword hashedPassword = HashedPassword.create("",
