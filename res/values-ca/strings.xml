@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Password Hash</string>
+	<string name="app_description">Aplicació per generar contrasenyes segures per llocs web. Feu servir "Compartir" al vostre navegador Android o obriu Password Hash directament. Compatible amb pwdhash.com. Aplicación es distribueix lliurement sota llicencia open source.</string>
+	<string name="siteAddress">Lloc web </string>
+	<string name="siteAddressHint">http://example.com</string>
+	<string name="password">Password</string>
+	<string name="hashedPassword">Hash:</string>
+	<string name="copyBtn">Copiar</string>
+	<string name="copiedToClipboardNotification">Contrasenya copiada al portapapers</string>
+</resources>
