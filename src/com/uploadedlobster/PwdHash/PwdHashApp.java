@@ -54,6 +54,7 @@ import android.widget.Toast;
  *
  */
 public class PwdHashApp extends Activity {
+	private Preferences mPreferences;
 	private EditText mSiteAddress;
 	private EditText mPassword;
 	private TextView mHashedPassword;
@@ -70,9 +71,18 @@ public class PwdHashApp extends Activity {
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
 		mCopyBtn = (Button) findViewById(R.id.copyBtn);
 
+		mPreferences = new Preferences(this);
+		
 		setWindowGeometry();
+		restoreSavedState();
 		handleIntents();
 		registerEventListeners();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		mPreferences.setSavedSiteAddress(mSiteAddress.getText().toString());
 	}
 
 	private void setWindowGeometry() {
@@ -86,6 +96,15 @@ public class PwdHashApp extends Activity {
 
 		if (metrics.widthPixels > maxWidth) {
 			window.setLayout(maxWidth, LayoutParams.WRAP_CONTENT);
+		}
+	}
+
+	private void restoreSavedState() {
+		String savedSiteAddress = mPreferences.getSavedSiteAddress();
+		
+		if (!savedSiteAddress.equals("")) {
+			mSiteAddress.setText(savedSiteAddress);
+			mSiteAddress.selectAll();
 		}
 	}
 
