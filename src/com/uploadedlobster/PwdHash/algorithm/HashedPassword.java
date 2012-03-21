@@ -31,7 +31,7 @@
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
 
-package com.uploadedlobster.PwdHash;
+package com.uploadedlobster.PwdHash.algorithm;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;

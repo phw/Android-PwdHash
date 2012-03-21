@@ -5,7 +5,7 @@ package com.uploadedlobster.PwdHash.test;
 
 import android.test.AndroidTestCase;
 
-import com.uploadedlobster.PwdHash.HashedPassword;
+import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
 
 /**
  * @author Philipp Wolfer

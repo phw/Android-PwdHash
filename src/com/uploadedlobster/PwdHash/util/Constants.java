@@ -1,5 +1,5 @@
 /**
- * PwdHash, Preferences.java
+ * PwdHash, Constants.java
  * A password hash implementation for Android.
  *
  * Copyright (c) 2012 Philipp Wolfer
@@ -31,26 +31,11 @@
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
 
-package com.uploadedlobster.PwdHash;
+package com.uploadedlobster.PwdHash.util;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+public final class Constants {
 
-public class Preferences {
-	private SharedPreferences mSettings;
+	public static final String PREFERENCES_NAME = "com.uploadedlobster.pwdhash.preferences";
 
-	public Preferences(Context packageContext) {
-		mSettings = packageContext.getSharedPreferences(
-				Constants.PREFERENCES_NAME, Context.MODE_PRIVATE);
-	}
-
-	public String getSavedSiteAddress() {
-		return mSettings.getString(Constants.PREFERENCE_SAVED_SITE_ADDRESS, "");
-	}
-
-	public void setSavedSiteAddress(String siteAddress) {
-		SharedPreferences.Editor editor = mSettings.edit();
-		editor.putString(Constants.PREFERENCE_SAVED_SITE_ADDRESS, siteAddress);
-		editor.commit();
-	}
+	public static final String PREFERENCE_SAVED_SITE_ADDRESS = "saved_uri";
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import android.test.AndroidTestCase;
 
-import com.uploadedlobster.PwdHash.DomainExtractor;
+import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
 
 /**
  * @author Philipp Wolfer

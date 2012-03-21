@@ -31,7 +31,16 @@
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
 
-package com.uploadedlobster.PwdHash;
+package com.uploadedlobster.PwdHash.activities;
+
+import com.uploadedlobster.PwdHash.R;
+import com.uploadedlobster.PwdHash.R.dimen;
+import com.uploadedlobster.PwdHash.R.id;
+import com.uploadedlobster.PwdHash.R.layout;
+import com.uploadedlobster.PwdHash.R.string;
+import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
+import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
+import com.uploadedlobster.PwdHash.util.Preferences;
 
 import android.app.Activity;
 import android.content.Context;
