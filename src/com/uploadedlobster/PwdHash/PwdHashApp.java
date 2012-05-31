@@ -82,7 +82,7 @@ public class PwdHashApp extends Activity {
 	@Override
 	protected void onStop() {
 		super.onStop();
-		mPreferences.setSavedSiteAddress(mSiteAddress.getText().toString());
+		mPreferences.setSavedSiteAddress(getDomain());
 	}
 
 	private void setWindowGeometry() {
@@ -124,8 +124,7 @@ public class PwdHashApp extends Activity {
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
-						.toString());
+				String realm = getDomain();
 				String password = mPassword.getText().toString();
 				
 				updateHashedPassword(realm, password);
@@ -165,6 +164,11 @@ public class PwdHashApp extends Activity {
 				}
 			}
 		});
+	}
+	
+	private String getDomain() {
+		return DomainExtractor.extractDomain(
+			mSiteAddress.getText().toString());
 	}
 
 	private String updateHashedPassword(String realm, String password) {
