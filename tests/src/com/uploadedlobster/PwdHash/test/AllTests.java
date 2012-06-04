@@ -10,6 +10,7 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(HashedPasswordTest.class);
 		suite.addTestSuite(DomainExtractorTest.class);
+		suite.addTestSuite(MainActivityTest.class);
 		//$JUnit-END$
 		return suite;
 	}
