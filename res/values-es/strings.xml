@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Password Hash</string>
-	<string name="app_description">Aplicación que genera contraseñas seguras para sitios web. Use la opción compartir en el navegador Android o abra Password Hash directamente. Compatible con pwdhash.com. Esta aplicación se distribuye libremente bajo licencias open source.</string>
+	<string name="app_description">Aplicación que genera contraseñas seguras para sitios web. Use la opción compartir en el navegador Android o abra Password Hash directamente. Compatible con pwdhash.com.
+
+Esta aplicación se distribuye libremente bajo licencias open source.</string>
 	<string name="siteAddress">Dirección del sitio</string>
 	<string name="siteAddressHint">http://example.com</string>
 	<string name="password">Contraseña</string>
