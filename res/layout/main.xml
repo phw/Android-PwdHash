@@ -1,35 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="wrap_content" android:paddingLeft="@dimen/windowPadding"
-	android:paddingRight="@dimen/windowPadding" android:paddingBottom="@dimen/windowPadding">
+    style="@style/MainWindow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-	<TextView android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:text="@string/siteAddress" />
-	<EditText android:id="@+id/siteAddress" android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:hint="@string/siteAddressHint"
-		android:inputType="textUri" />
+    <TextView
+        style="@style/Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/siteAddress" />
 
-	<TextView android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:text="@string/password" />
-	<EditText android:id="@+id/password" android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/siteAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/siteAddressHint"
+        android:inputType="textUri" />
 
-	<LinearLayout android:orientation="horizontal"
-		android:layout_width="match_parent" android:layout_height="wrap_content">
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/hashedPassword"
-			android:paddingRight="@dimen/minorPadding" />
-		<TextView android:id="@+id/hashedPassword"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
-	</LinearLayout>
+    <TextView
+        style="@style/Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password" />
 
-	<LinearLayout android:orientation="horizontal"
-		android:layout_width="match_parent" android:layout_height="wrap_content"
-		android:paddingTop="@dimen/minorPadding">
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
 
-		<Button android:text="@string/copyBtn" android:id="@+id/copyBtn"
-			android:layout_width="0dip" android:layout_height="wrap_content"
-			android:layout_weight="1" android:enabled="false" />
-	</LinearLayout>
+    <LinearLayout
+        style="@style/Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/minorPadding"
+            android:text="@string/hashedPassword" />
+
+        <TextView
+            android:id="@+id/hashedPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/minorPadding" >
+
+        <Button
+            android:id="@+id/copyBtn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:state_enabled="false"
+            android:text="@string/copyBtn" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainWindow">
+        <item name="android:paddingBottom">@dimen/windowPadding</item>
+        <item name="android:paddingLeft">@dimen/windowPadding</item>
+        <item name="android:paddingRight">@dimen/windowPadding</item>
+    </style>
+
+    <style name="Label"></style>
+
+</resources>
