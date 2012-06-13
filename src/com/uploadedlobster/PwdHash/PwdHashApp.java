@@ -37,7 +37,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -50,7 +49,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * @author philipp
+ * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  *
  */
 public class PwdHashApp extends Activity {
@@ -155,8 +154,7 @@ public class PwdHashApp extends Activity {
 					String hashedPassword = updateHashedPassword(realm, password);
 	
 					if (!hashedPassword.equals("")) {
-						ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-						clipboard.setText(hashedPassword);
+						copyToClipboard(hashedPassword);
 						CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
 						showNotification(clipboardNotification);
 						finish();
@@ -193,5 +191,12 @@ public class PwdHashApp extends Activity {
 		int duration = Toast.LENGTH_LONG;
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
+	}
+
+	@SuppressWarnings("deprecation")
+	protected void copyToClipboard(String hashedPassword) {
+		// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
+		android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+		clipboard.setText(hashedPassword);
 	}
 }
