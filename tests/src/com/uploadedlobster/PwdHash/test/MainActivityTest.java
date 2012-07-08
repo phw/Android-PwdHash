@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.jayway.android.robotium.solo.Solo;
-import com.uploadedlobster.PwdHash.PwdHashApp;
+import com.uploadedlobster.PwdHash.activities.PwdHashApp;
 import com.uploadedlobster.PwdHash.R;
 
 /**

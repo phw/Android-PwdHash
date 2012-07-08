@@ -33,15 +33,6 @@
 
 package com.uploadedlobster.PwdHash.activities;
 
-import com.uploadedlobster.PwdHash.R;
-import com.uploadedlobster.PwdHash.R.dimen;
-import com.uploadedlobster.PwdHash.R.id;
-import com.uploadedlobster.PwdHash.R.layout;
-import com.uploadedlobster.PwdHash.R.string;
-import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
-import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
-import com.uploadedlobster.PwdHash.util.Preferences;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -56,6 +47,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.uploadedlobster.PwdHash.R;
+import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
+import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
+import com.uploadedlobster.PwdHash.util.Preferences;
 
 /**
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
