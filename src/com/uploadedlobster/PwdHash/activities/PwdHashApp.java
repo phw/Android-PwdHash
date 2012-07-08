@@ -58,6 +58,7 @@ import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
 import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
 import com.uploadedlobster.PwdHash.storage.HistoryDataSource;
 import com.uploadedlobster.PwdHash.storage.HistoryOpenHelper;
+import com.uploadedlobster.PwdHash.storage.UpdateHistoryTask;
 import com.uploadedlobster.PwdHash.util.Preferences;
 
 /**
@@ -135,15 +136,15 @@ public class PwdHashApp extends Activity {
 
 	protected void initAutoComplete() {
 		mHistory.open();
-		String[] from = new String[] { HistoryOpenHelper.COLUMN_DOMAIN };
-		int[] to = new int[] { R.id.autocomplete_domain_name };
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.autocomplete_item, null, from, to, 0);
+		String[] from = new String[] { HistoryOpenHelper.COLUMN_REALM };
+		int[] to = new int[] { android.R.id.text1 };
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_dropdown_item_1line, null, from, to, 0);
 		
 		// Set the CursorToStringConverter, to provide the labels for the
         // choices to be displayed in the AutoCompleteTextView.
         adapter.setCursorToStringConverter(new CursorToStringConverter() {
             public String convertToString(android.database.Cursor cursor) {
-                final int columnIndex = cursor.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_DOMAIN);
+                final int columnIndex = cursor.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_REALM);
                 final String domain = cursor.getString(columnIndex);
                 return domain;
             }
@@ -153,8 +154,8 @@ public class PwdHashApp extends Activity {
 		// that match the specified input.
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 		    public Cursor runQuery(CharSequence constraint) {
-		        Cursor cursor = mHistory.getHistoryCursor(
-		                (constraint != null ? constraint.toString() : ""));
+		    	String partialInput = (constraint != null ? constraint.toString() : "");
+		        Cursor cursor = mHistory.getHistoryCursor(partialInput);
 		        return cursor;
 		    }
 		});
@@ -197,7 +198,7 @@ public class PwdHashApp extends Activity {
 					String hashedPassword = updateHashedPassword(realm, password);
 	
 					if (!hashedPassword.equals("")) {
-						mHistory.insertHistoryEntry(realm);
+						new UpdateHistoryTask(mHistory).execute(realm);
 						copyToClipboard(hashedPassword);
 						CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
 						showNotification(clipboardNotification);

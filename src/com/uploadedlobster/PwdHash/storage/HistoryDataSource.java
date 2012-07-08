@@ -43,7 +43,7 @@ public class HistoryDataSource {
 	private SQLiteDatabase mDatabase;
 	private HistoryOpenHelper mDbHelper;
 	
-	private static final int SUGGESTION_LIMIT = 10;
+	private static final int SUGGESTION_LIMIT = 6;
 	
 	public HistoryDataSource(Context context) {
 		mDbHelper = new HistoryOpenHelper(context);
@@ -57,27 +57,34 @@ public class HistoryDataSource {
 		mDbHelper.close();
 	}
 	
-	public void insertHistoryEntry(String domain) {
-		String[] values = new String[] { domain, domain };
+	public void insertHistoryEntry(String realm) {
+		int id = getExistingEntryId(realm);
+		
+		String[] values = new String[] {
+				id < 0 ? null : String.valueOf(id),
+				realm, realm };
 		StringBuilder sqlBuilder = new StringBuilder();
+		
 		sqlBuilder
 			.append("INSERT OR REPLACE INTO history (")
-			.append(HistoryOpenHelper.COLUMN_DOMAIN).append(", ")
+			.append(HistoryOpenHelper.COLUMN_ID).append(", ")
+			.append(HistoryOpenHelper.COLUMN_REALM).append(", ")
 			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT).append(", ")
 			.append(HistoryOpenHelper.COLUMN_LAST_ACCESS).append(") ")
-			.append("VALUES (?, ")
+			.append("VALUES (?, ?, ")
 			.append("(SELECT ")
 			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT)
 			.append(" + 1 FROM history WHERE ")
-			.append(HistoryOpenHelper.COLUMN_DOMAIN)
+			.append(HistoryOpenHelper.COLUMN_REALM)
 			.append(" = ?), datetime('now'))");
 		
 		mDatabase.execSQL(sqlBuilder.toString(), values);
 	}
 
-	public Cursor getHistoryCursor(String partialDomain) {
-		String selection = HistoryOpenHelper.COLUMN_DOMAIN + " LIKE ?";
-		String[] selectionArgs = new String[] { "%" + partialDomain + "%" };
+	public Cursor getHistoryCursor(String partialRealm) {
+		String[] columns = new String[] { HistoryOpenHelper.COLUMN_ID, HistoryOpenHelper.COLUMN_REALM };
+		String selection = HistoryOpenHelper.COLUMN_REALM + " LIKE ?";
+		String[] selectionArgs = new String[] { "%" + partialRealm + "%" };
 		
 		StringBuilder orderBy = new StringBuilder()
 			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT)
@@ -89,7 +96,7 @@ public class HistoryDataSource {
 		
 		Cursor cursor = mDatabase.query(
 				HistoryOpenHelper.TABLE_HISTORY,
-				new String[] { HistoryOpenHelper.COLUMN_ID, HistoryOpenHelper.COLUMN_DOMAIN },
+				columns,
 				selection,
 				selectionArgs,
 				"", "",
@@ -97,5 +104,21 @@ public class HistoryDataSource {
 				limit);
 		
 		return cursor;
+	}
+	
+	private int getExistingEntryId(String realm) {
+		String[] columns = new String[] { HistoryOpenHelper.COLUMN_ID };
+		String selection = HistoryOpenHelper.COLUMN_REALM + " LIKE ?";
+		String[] selectionArgs = new String[] { realm };
+		
+		Cursor cursor = mDatabase.query(HistoryOpenHelper.TABLE_HISTORY, columns, selection, selectionArgs, "", "", "");
+		
+		if (cursor.moveToFirst()) {
+			int idColumn = cursor.getColumnIndex(HistoryOpenHelper.COLUMN_ID);
+			return cursor.getInt(idColumn);
+		}
+		else {
+			return -1;
+		}
 	}
 }

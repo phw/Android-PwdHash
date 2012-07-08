@@ -43,14 +43,14 @@ public class HistoryOpenHelper extends SQLiteOpenHelper {
 
 	public static final String TABLE_HISTORY = "history";
 	public static final String COLUMN_ID = "_id";
-	public static final String COLUMN_DOMAIN = "domain";
+	public static final String COLUMN_REALM = "realm";
 	public static final String COLUMN_USAGE_COUNT = "usage_count";
 	public static final String COLUMN_LAST_ACCESS = "last_access";
 	
 	private static final String CREATE_TABLE =
 		"CREATE TABLE " + TABLE_HISTORY + " (" +
 		COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + 
-		COLUMN_DOMAIN + " TEXT," +
+		COLUMN_REALM + " TEXT," +
 		COLUMN_USAGE_COUNT + " INTEGER NOT NULL DEFAULT 0," +
 		COLUMN_LAST_ACCESS + " TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)";
 	
