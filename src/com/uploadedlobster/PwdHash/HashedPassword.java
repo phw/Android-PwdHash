@@ -146,7 +146,7 @@ public final class HashedPassword {
 		byte[] bytes = new byte[data.length()];
 
 		for (int i = 0; i < data.length(); i++) {
-			Integer codePoint = new Integer(data.codePointAt(i));
+			Integer codePoint = Integer.valueOf(data.codePointAt(i));
 
 			if (codePoint <= 255)
 				bytes[i] = codePoint.byteValue();
@@ -228,7 +228,7 @@ public final class HashedPassword {
 	private static String rotate(String s, int amount) {
 		Queue<Character> work = new LinkedList<Character>();
 		for (char c : s.toCharArray()) {
-			work.add(new Character(c));
+			work.add(Character.valueOf(c));
 		}
 
 		while (amount-- > 0)
