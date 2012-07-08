@@ -36,21 +36,28 @@ package com.uploadedlobster.PwdHash.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uploadedlobster.PwdHash.R;
 import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
 import com.uploadedlobster.PwdHash.algorithm.HashedPassword;
+import com.uploadedlobster.PwdHash.storage.HistoryDataSource;
+import com.uploadedlobster.PwdHash.storage.HistoryOpenHelper;
 import com.uploadedlobster.PwdHash.util.Preferences;
 
 /**
@@ -59,7 +66,8 @@ import com.uploadedlobster.PwdHash.util.Preferences;
  */
 public class PwdHashApp extends Activity {
 	private Preferences mPreferences;
-	private EditText mSiteAddress;
+	private HistoryDataSource mHistory;
+	private AutoCompleteTextView mSiteAddress;
 	private EditText mPassword;
 	private TextView mHashedPassword;
 	private Button mCopyBtn;
@@ -70,17 +78,19 @@ public class PwdHashApp extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		mSiteAddress = (EditText) findViewById(R.id.siteAddress);
+		mSiteAddress = (AutoCompleteTextView) findViewById(R.id.siteAddress);
 		mPassword = (EditText) findViewById(R.id.password);
 		mHashedPassword = (TextView) findViewById(R.id.hashedPassword);
 		mCopyBtn = (Button) findViewById(R.id.copyBtn);
 
 		mPreferences = new Preferences(this);
+		mHistory = new HistoryDataSource(this);
 		
 		setWindowGeometry();
 		restoreSavedState();
 		handleIntents();
 		registerEventListeners();
+		initAutoComplete();
 	}
 
 	@Override
@@ -123,6 +133,35 @@ public class PwdHashApp extends Activity {
 		}
 	}
 
+	protected void initAutoComplete() {
+		mHistory.open();
+		String[] from = new String[] { HistoryOpenHelper.COLUMN_DOMAIN };
+		int[] to = new int[] { R.id.autocomplete_domain_name };
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.autocomplete_item, null, from, to, 0);
+		
+		// Set the CursorToStringConverter, to provide the labels for the
+        // choices to be displayed in the AutoCompleteTextView.
+        adapter.setCursorToStringConverter(new CursorToStringConverter() {
+            public String convertToString(android.database.Cursor cursor) {
+                final int columnIndex = cursor.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_DOMAIN);
+                final String domain = cursor.getString(columnIndex);
+                return domain;
+            }
+        });
+		
+		// Set the FilterQueryProvider, to run queries for choices
+		// that match the specified input.
+		adapter.setFilterQueryProvider(new FilterQueryProvider() {
+		    public Cursor runQuery(CharSequence constraint) {
+		        Cursor cursor = mHistory.getHistoryCursor(
+		                (constraint != null ? constraint.toString() : ""));
+		        return cursor;
+		    }
+		});
+    
+		mSiteAddress.setAdapter(adapter);
+	}
+
 	private void registerEventListeners() {
 		TextWatcher updatePasswordTextWatcher = new TextWatcher() {
 			
@@ -147,8 +186,7 @@ public class PwdHashApp extends Activity {
 		mCopyBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String realm = DomainExtractor.extractDomain(mSiteAddress.getText()
-						.toString());
+				String realm = getDomain();
 				String password = mPassword.getText().toString();
 
 				if (realm.equals("")) {
@@ -159,6 +197,7 @@ public class PwdHashApp extends Activity {
 					String hashedPassword = updateHashedPassword(realm, password);
 	
 					if (!hashedPassword.equals("")) {
+						mHistory.insertHistoryEntry(realm);
 						copyToClipboard(hashedPassword);
 						CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
 						showNotification(clipboardNotification);

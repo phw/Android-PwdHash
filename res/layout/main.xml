@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/siteAddress" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/siteAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

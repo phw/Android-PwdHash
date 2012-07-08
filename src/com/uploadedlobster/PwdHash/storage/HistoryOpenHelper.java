@@ -1,5 +1,5 @@
 /**
- * PwdHash, Constants.java
+ * PwdHash, HistoryOpenHelper.java
  * A password hash implementation for Android.
  *
  * Copyright (c) 2012 Philipp Wolfer
@@ -31,15 +31,40 @@
  * @author Philipp Wolfer <ph.wolfer@googlemail.com>
  */
 
-package com.uploadedlobster.PwdHash.util;
+package com.uploadedlobster.PwdHash.storage;
 
-public final class Constants {
+import com.uploadedlobster.PwdHash.util.Constants;
 
-	public static final String PREFERENCES_NAME = "com.uploadedlobster.pwdhash.preferences";
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-	public static final String PREFERENCE_SAVED_SITE_ADDRESS = "saved_uri";
+public class HistoryOpenHelper extends SQLiteOpenHelper {
 
-	public static final String DATABASE_NAME = "pwdhash";
+	public static final String TABLE_HISTORY = "history";
+	public static final String COLUMN_ID = "_id";
+	public static final String COLUMN_DOMAIN = "domain";
+	public static final String COLUMN_USAGE_COUNT = "usage_count";
+	public static final String COLUMN_LAST_ACCESS = "last_access";
+	
+	private static final String CREATE_TABLE =
+		"CREATE TABLE " + TABLE_HISTORY + " (" +
+		COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + 
+		COLUMN_DOMAIN + " TEXT," +
+		COLUMN_USAGE_COUNT + " INTEGER NOT NULL DEFAULT 0," +
+		COLUMN_LAST_ACCESS + " TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)";
+	
+	HistoryOpenHelper(Context context) {
+        super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
+	}
 
-	public static final int DATABASE_VERSION = 1;
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL(CREATE_TABLE);
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	}
+
 }
