@@ -34,7 +34,6 @@
 package com.uploadedlobster.PwdHash.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -119,7 +118,6 @@ public class PwdHashApp extends Activity {
 		
 		if (!savedSiteAddress.equals("")) {
 			mSiteAddress.setText(savedSiteAddress);
-			mSiteAddress.selectAll();
 		}
 	}
 
@@ -138,28 +136,31 @@ public class PwdHashApp extends Activity {
 		mHistory.open();
 		String[] from = new String[] { HistoryOpenHelper.COLUMN_REALM };
 		int[] to = new int[] { android.R.id.text1 };
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_dropdown_item_1line, null, from, to, 0);
-		
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+				android.R.layout.simple_dropdown_item_1line, null, from, to, 0);
+
 		// Set the CursorToStringConverter, to provide the labels for the
-        // choices to be displayed in the AutoCompleteTextView.
-        adapter.setCursorToStringConverter(new CursorToStringConverter() {
-            public String convertToString(android.database.Cursor cursor) {
-                final int columnIndex = cursor.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_REALM);
-                final String domain = cursor.getString(columnIndex);
-                return domain;
-            }
-        });
-		
+		// choices to be displayed in the AutoCompleteTextView.
+		adapter.setCursorToStringConverter(new CursorToStringConverter() {
+			public String convertToString(android.database.Cursor cursor) {
+				final int columnIndex = cursor
+						.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_REALM);
+				final String domain = cursor.getString(columnIndex);
+				return domain;
+			}
+		});
+
 		// Set the FilterQueryProvider, to run queries for choices
 		// that match the specified input.
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
-		    public Cursor runQuery(CharSequence constraint) {
-		    	String partialInput = (constraint != null ? constraint.toString() : "");
-		        Cursor cursor = mHistory.getHistoryCursor(partialInput);
-		        return cursor;
-		    }
+			public Cursor runQuery(CharSequence constraint) {
+				String partialInput = (constraint != null ? constraint
+						.toString() : "");
+				Cursor cursor = mHistory.getHistoryCursor(partialInput);
+				return cursor;
+			}
 		});
-    
+
 		mSiteAddress.setAdapter(adapter);
 	}
 
@@ -232,9 +233,8 @@ public class PwdHashApp extends Activity {
 	}
 
 	private void showNotification(CharSequence text) {
-		Context context = getApplicationContext();
 		int duration = Toast.LENGTH_LONG;
-		Toast toast = Toast.makeText(context, text, duration);
+		Toast toast = Toast.makeText(this, text, duration);
 		toast.show();
 	}
 
