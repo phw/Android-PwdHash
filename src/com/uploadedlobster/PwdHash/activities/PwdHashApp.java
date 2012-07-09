@@ -67,10 +67,13 @@ import com.uploadedlobster.PwdHash.util.Preferences;
 public class PwdHashApp extends Activity {
 	private Preferences mPreferences;
 	private HistoryDataSource mHistory;
+	
 	private AutoCompleteTextView mSiteAddress;
 	private EditText mPassword;
 	private TextView mHashedPassword;
 	private Button mCopyBtn;
+	
+	private boolean mSaveStateOnExit = true;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -96,7 +99,13 @@ public class PwdHashApp extends Activity {
 	@Override
 	protected void onStop() {
 		super.onStop();
-		mPreferences.setSavedSiteAddress(getDomain());
+		
+		if (mSaveStateOnExit) {
+			mPreferences.setSavedSiteAddress(getDomain());
+		}
+		else {
+			mPreferences.setSavedSiteAddress("");
+		}
 	}
 
 	private void setWindowGeometry() {
@@ -132,7 +141,7 @@ public class PwdHashApp extends Activity {
 		}
 	}
 
-	protected void initAutoComplete() {
+	private void initAutoComplete() {
 		mHistory.open();
 		String[] from = new String[] { HistoryOpenHelper.COLUMN_REALM };
 		int[] to = new int[] { android.R.id.text1 };
@@ -203,6 +212,7 @@ public class PwdHashApp extends Activity {
 						copyToClipboard(hashedPassword);
 						CharSequence clipboardNotification = getString(R.string.copiedToClipboardNotification);
 						showNotification(clipboardNotification);
+						mSaveStateOnExit = false;
 						finish();
 					}
 				}
