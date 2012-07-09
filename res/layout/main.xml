@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/siteAddressHint"
-        android:inputType="textUri" />
+        android:inputType="textUri"
+        android:imeOptions="actionNext" />
 
     <TextView
         style="@style/Label"
@@ -28,7 +29,8 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:imeOptions="actionDone" />
 
     <LinearLayout
         style="@style/Label"
