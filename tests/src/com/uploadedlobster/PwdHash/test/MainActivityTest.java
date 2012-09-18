@@ -19,7 +19,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<PwdHashAp
 	private Button copyBtn;
 	
 	public MainActivityTest() {
-        super("com.uploadedlobster.PwdHash", PwdHashApp.class);
+        super(PwdHashApp.class);
     }
 	
 	@Override
