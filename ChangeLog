@@ -1,3 +1,8 @@
+2012-11-07  Philipp Wolfer  <ph.wolfer@googlemail.com>
+
+	* Release 1.3.1
+	* Security fix: Don't allow screenshots in recent apps menu	
+
 2012-07-09  Philipp Wolfer  <ph.wolfer@googlemail.com>
 
 	* Release 1.3.0
