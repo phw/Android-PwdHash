@@ -43,8 +43,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,6 +79,7 @@ public class PwdHashApp extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
 		setContentView(R.layout.main);
 
 		mSiteAddress = (AutoCompleteTextView) findViewById(R.id.siteAddress);
