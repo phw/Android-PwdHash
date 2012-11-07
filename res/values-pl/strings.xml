@@ -2,10 +2,9 @@
 <resources>
 	<string name="app_name">Hash hasła</string>
 	<string name="app_description">Lekkie narzędzie do generowania antywłamaniowy, konkretnych haseł do stron. Wystarczy skorzystać z  opcji "Poleć stronę" w przeglądarce Android lub otworzyć Hash hasło bezpośrednio. Kompatybilne z pwdhash.com.
-
 Ta aplikacja jest darmowym oprogramowaniem na licencji open source.</string>
 	<string name="siteAddress">Adres strony</string>
-	<string name="siteAddressHint">http://przyklad.pl</string>
+	<string name="siteAddressHint">http://example.com</string>
 	<string name="password">Hasło</string>
 	<string name="hashedPassword">Hash:</string>
 	<string name="copyBtn">Kopiuj</string>
