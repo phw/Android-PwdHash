@@ -136,6 +136,7 @@ public class PwdHashApp extends Activity {
 		if (intent.getAction().equals(Intent.ACTION_SEND)) {
 			String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
 			if (!siteAddress.equals("")) {
+				siteAddress = DomainExtractor.extractDomain(siteAddress);
 				mSiteAddress.setText(siteAddress);
 				mPassword.requestFocus();
 			}
