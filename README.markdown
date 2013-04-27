@@ -24,4 +24,4 @@ Known Issues
 
 Author
 ------
-Philipp Wolfer <ph.wolfer@googlemail.com>
+Philipp Wolfer <ph.wolfer@gmail.com>
