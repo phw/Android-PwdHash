@@ -15,7 +15,7 @@ See LICENSE for details.
 Translations
 ------------
 You can help translate this project into your language. Please visit the Android PwdHash
-localization project on http://www.getlocalization.com/Android_PwdHash/
+localization project on https://www.transifex.com/projects/p/Android_PwdHash/
 
 Known Issues
 -----------
