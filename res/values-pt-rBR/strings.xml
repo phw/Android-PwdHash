@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Aplicativo para geração de senhas seguras para a internet. Use a opção \"Compartilhar página\" no navegador do Android ou abra Password Hash diretamente. Compatível com pwdhash.com.\n\nEste aplicativo é um software livre, lançado sob de código aberto.</string>
+  <string name="siteAddress">Endereço do site</string>
+  <string name="siteAddressHint">http://exemplo.com</string>
+  <string name="password">Senha</string>
+  <string name="hashedPassword">Senha segura:</string>
+  <string name="copyBtn">Copiar</string>
+  <string name="copiedToClipboardNotification">Senha copiada para a área de transferência.</string>
+</resources>
