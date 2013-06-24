@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Mot de passe crypté</string>
-	<string name="app_description">Utilitaire léger pour générer des mots de passe fiables contre les intrusions et spécifiques au site web. Utilisez simplement l\'option sur la page Partager dans le navigateur Android ou ouvrez Crypter le mot de passe directement. Compatible avec pwdhash.com. Cette appli est un logiciel gratuit publié sous licence open source.</string>
+	<string name="app_name">Password Hash</string>
+	<string name="app_description">Utilitaire léger pour générer des mots de passe fiables contre les intrusions et spécifiques au site web. Utilisez simplement l\'option sur la page Partager dans le navigateur Android ou ouvrez Crypter le mot de passe directement. Compatible avec pwdhash.com.
+	    
+Cette appli est un logiciel gratuit publié sous licence open source.</string>
 	<string name="siteAddress">Adresse du site</string>
 	<string name="siteAddressHint">http://example.com</string>
 	<string name="password">Mot de passe</string>
-	<string name="hashedPassword">Mot de passe crypté</string>
+	<string name="hashedPassword">Mot de passe crypté:</string>
 	<string name="copyBtn">Copier</string>
 	<string name="copiedToClipboardNotification">Le mot de passe a été copié dans le presse-papier</string>
 </resources>
