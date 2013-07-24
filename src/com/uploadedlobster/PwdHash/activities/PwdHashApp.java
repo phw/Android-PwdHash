@@ -79,7 +79,11 @@ public class PwdHashApp extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
+		
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+			getWindow().setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE);
+		}
+		
 		setContentView(R.layout.main);
 
 		mSiteAddress = (AutoCompleteTextView) findViewById(R.id.siteAddress);
