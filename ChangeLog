@@ -4,8 +4,9 @@
 	* Keyboard should use no auto correction in URL input
 	* Bugfix: Removed screenshot blocking in Android prior
 	  to 3.0. This security fix caused a distorted screen
-	  on some devices.
+	  on some Samsung devices running Android 2.2 or 2.3.
 	* Updated Czech translation
+	* Tested with Android 4.3
 
 2013-06-30  Philipp Wolfer  <ph.wolfer@gmail.com>
 
