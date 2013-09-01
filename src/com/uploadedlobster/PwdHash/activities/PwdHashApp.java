@@ -42,6 +42,7 @@ import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
@@ -256,8 +257,15 @@ public class PwdHashApp extends Activity {
 
 	@SuppressWarnings("deprecation")
 	protected void copyToClipboard(String hashedPassword) {
-		// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
-		android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-		clipboard.setText(hashedPassword);
+		try {
+			// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
+			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+			clipboard.setText(hashedPassword);
+		}
+		catch (IllegalStateException e) {
+			// Workaround for some Android 4.3 devices, where writing to the clipboard manager raises an exception
+			// if there is an active clipboard listener.
+			Log.w("PwdHashApp", "IllegalStateException raised when accessing clipboard.");
+		}
 	}
 }
