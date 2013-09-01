@@ -1,3 +1,9 @@
+2013-09-01  Philipp Wolfer <ph.wolfer@gmail.com>
+
+	* Release 1.3.7
+	* Fixed occasional crash on some Android 4.3 devices
+	* Dutch translation (by Kevin Morssink)
+
 2013-07-25  Philipp Wolfer <ph.wolfer@gmail.com>
 
 	* Release 1.3.6
