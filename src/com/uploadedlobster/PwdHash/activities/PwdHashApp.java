@@ -140,7 +140,7 @@ public class PwdHashApp extends Activity {
 		Intent intent = getIntent();
 		if (intent != null) {
 			String action = intent.getAction();
-			if (action != null && intent.getAction().equals(Intent.ACTION_SEND)) {
+			if (action != null && action.equals(Intent.ACTION_SEND)) {
 				String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
 				if (!siteAddress.equals("")) {
 					siteAddress = DomainExtractor.extractDomain(siteAddress);
