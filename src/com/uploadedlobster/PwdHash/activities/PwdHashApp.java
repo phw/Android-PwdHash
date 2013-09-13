@@ -138,12 +138,15 @@ public class PwdHashApp extends Activity {
 
 	private void handleIntents() {
 		Intent intent = getIntent();
-		if (intent != null && intent.getAction().equals(Intent.ACTION_SEND)) {
-			String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
-			if (!siteAddress.equals("")) {
-				siteAddress = DomainExtractor.extractDomain(siteAddress);
-				mSiteAddress.setText(siteAddress);
-				mPassword.requestFocus();
+		if (intent != null) {
+			String action = intent.getAction();
+			if (action != null && intent.getAction().equals(Intent.ACTION_SEND)) {
+				String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
+				if (!siteAddress.equals("")) {
+					siteAddress = DomainExtractor.extractDomain(siteAddress);
+					mSiteAddress.setText(siteAddress);
+					mPassword.requestFocus();
+				}
 			}
 		}
 	}
