@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Wachtwoord hash</string>
+	<string name="app_description">Lightweight tool to generate website specific, theft-resistant passwords. Just use the "Share page" option in the Android browser or open Password Hash directly. Compatible with pwdhash.com.
+
+This app is free software published under an open source license.</string>
   <string name="siteAddress">Website adres</string>
   <string name="siteAddressHint">http://www.example.nl</string>
   <string name="password">Wachtwoord</string>
