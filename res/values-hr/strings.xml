@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Lagani alat za generiranje posebnih, otpornih na krađu lozinki. Samo iskoristite \"Share page\" opciju u Android Pretraživaču ili izravno otvorite Password Hash. Kompatibilno sa pwdhash.com\n\nOva aplikacija je besplatan software izdan pod open-source licencom.  (Preveo: Marijan Smetko, Novska, Hrvatska)</string>
+  <string name="siteAddress">Adresa stranice</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">Lozinka</string>
+  <string name="hashedPassword">Hash:</string>
+  <string name="copyBtn">Kopiraj</string>
+  <string name="copiedToClipboardNotification">Lozinka je kopirana u međuspremnik.</string>
+</resources>
