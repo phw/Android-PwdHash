@@ -2,7 +2,7 @@
  * PwdHash, PwdHashApp.java
  * A password hash implementation for Android.
  *
- * Copyright (c) 2010 Philipp Wolfer
+ * Copyright (c) 2010 - 2013 Philipp Wolfer
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -142,7 +142,7 @@ public class PwdHashApp extends Activity {
 			String action = intent.getAction();
 			if (action != null && action.equals(Intent.ACTION_SEND)) {
 				String siteAddress = intent.getStringExtra(Intent.EXTRA_TEXT);
-				if (!siteAddress.equals("")) {
+				if (siteAddress != null && !siteAddress.equals("")) {
 					siteAddress = DomainExtractor.extractDomain(siteAddress);
 					mSiteAddress.setText(siteAddress);
 					mPassword.requestFocus();
