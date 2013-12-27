@@ -1,7 +1,9 @@
-2013-12-?? Philipp Wolfer <ph.wolfer@gmail.com>
+2013-12-27 Philipp Wolfer <ph.wolfer@gmail.com>
 
-    * Release 1.x
+    * Release 1.3.9
     * Added Croatian translation (by Marijan Smetko, Novska, Croatia)
+    * Fixed another possible exception when launched from another app
+    * Tested with Android 4.4
 
 2013-09-09 Philipp Wolfer <ph.wolfer@gmail.com>
 
