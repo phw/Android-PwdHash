@@ -1,0 +1,13 @@
+[main]
+host = https://www.transifex.com
+
+[Android_PwdHash.strings]
+file_filter = res/values-<lang>/strings.xml
+source_file = res/values/strings.xml
+source_lang = en
+trans.nl_NL = res/values-nl-rNL/strings.xml
+trans.pt_BR = res/values-pt-rBR/strings.xml
+trans.ro_RO = res/values-ro-rRO/strings.xml
+trans.zh_CN = res/values-zh-rCN/strings.xml
+type = ANDROID
+
