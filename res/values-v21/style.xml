@@ -2,6 +2,9 @@
 <resources>
 
     <style name="MainWindow" parent="android:Theme.Material">
+        <item name="android:colorPrimary">#283593</item>
+	    <item name="android:colorPrimaryDark">#1a237e</item>
+	    <item name="android:colorAccent">#c6ff00</item>
         <item name="android:paddingTop">@dimen/minorPadding</item>
         <item name="android:paddingBottom">@dimen/windowPadding</item>
         <item name="android:paddingLeft">@dimen/windowPadding</item>
