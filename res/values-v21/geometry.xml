@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="maxWindowWidth">448dp</dimen>
+	<dimen name="windowPadding">24dp</dimen>
+	<dimen name="minorPadding">8dp</dimen>
+</resources>
