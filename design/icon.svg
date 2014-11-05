@@ -16,9 +16,11 @@
    version="1.1"
    inkscape:version="0.48.5 r10040"
    sodipodi:docname="icon.svg"
-   inkscape:export-filename="/home/phw/devel/mobile/android/workspace/PwdHash/design/icon-ldpi.png"
-   inkscape:export-xdpi="67.5"
-   inkscape:export-ydpi="67.5">
+   inkscape:export-filename="/home/phw/devel/mobile/android/workspace/PwdHash/design/store-icon.png"
+   inkscape:export-xdpi="960"
+   inkscape:export-ydpi="960">
+  <title
+     id="title3770">Android PwdHash App Icon</title>
   <defs
      id="defs4">
     <linearGradient
@@ -38,7 +40,8 @@
     </linearGradient>
     <filter
        inkscape:collect="always"
-       id="filter3800">
+       id="filter3800"
+       color-interpolation-filters="sRGB">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="0.90250002"
@@ -47,14 +50,14 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3806"
-       id="radialGradient3814"
-       cx="24"
-       cy="1028.3623"
-       fx="24"
-       fy="1028.3623"
-       r="19"
+       id="radialGradient3890"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.5263158,0,0,2.5263158,-17.631578,-1550.6054)" />
+       gradientTransform="matrix(-1.9998611,-1.865534e-7,1.8639616e-7,-1.9981755,120.85843,3132.2756)"
+       cx="38.927582"
+       cy="1043.4067"
+       fx="38.927582"
+       fy="1043.4067"
+       r="19" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -63,9 +66,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="10.021129"
-     inkscape:cy="30.265356"
+     inkscape:zoom="8"
+     inkscape:cx="-2.087276"
+     inkscape:cy="35.08211"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -101,8 +104,33 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title>Android PwdHash App Icon</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/3.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Philipp Wolfer</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>https://github.com/phw/Android-PwdHash</dc:source>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -116,14 +144,15 @@
        height="30.083334"
        width="30.083334"
        id="rect3794"
-       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:7.91666650999999977;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3800)" />
+       style="opacity:0.6;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:7.91666651;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3800)" />
     <rect
-       style="fill:#283593;fill-opacity:1;stroke:#283593;stroke-width:7.91666651;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#283593;fill-opacity:1;stroke:none"
        id="rect2985"
-       width="30.083334"
-       height="30.083334"
-       x="8.958333"
-       y="1013.3206" />
+       width="38"
+       height="38"
+       x="5"
+       y="1009.3622"
+       ry="5.0000172" />
     <text
        xml:space="preserve"
        style="font-size:35.49393463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Noto Sans;-inkscape-font-specification:Noto Sans"
@@ -139,12 +168,13 @@
     <rect
        y="1009.3622"
        x="5"
-       height="76"
-       width="76"
+       height="38"
+       width="38"
        id="rect3804"
-       style="fill:url(#radialGradient3814);fill-opacity:1;stroke:none"
+       style="fill:url(#radialGradient3890);fill-opacity:1;stroke:none"
        inkscape:export-filename="/home/phw/devel/mobile/android/workspace/PwdHash/design/icon-xhdpi.png"
        inkscape:export-xdpi="113.68"
-       inkscape:export-ydpi="113.68" />
+       inkscape:export-ydpi="113.68"
+       ry="5.0000172" />
   </g>
 </svg>
