@@ -28,7 +28,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
- * @author Philipp Wolfer <ph.wolfer@googlemail.com>
+ * @author Philipp Wolfer <ph.wolfer@gmail.com>
  */
 
 package com.uploadedlobster.PwdHash.algorithm;
@@ -54,7 +54,7 @@ import android.util.Log;
  * the hashed password. Based on original JavaScript code from:
  * https://www.pwdhash.com/
  * 
- * @author Philipp Wolfer <ph.wolfer@googlemail.com>
+ * @author Philipp Wolfer <ph.wolfer@gmail.com>
  */
 public final class HashedPassword {
 
