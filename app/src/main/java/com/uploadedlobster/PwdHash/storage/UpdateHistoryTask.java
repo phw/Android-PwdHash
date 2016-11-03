@@ -37,7 +37,7 @@ import android.os.AsyncTask;
 
 public class UpdateHistoryTask extends AsyncTask<String, Void, Void> {
 
-	HistoryDataSource mDataSource;
+	private final HistoryDataSource mDataSource;
 	
 	public UpdateHistoryTask(HistoryDataSource dataSource) {
 		mDataSource = dataSource;

@@ -41,7 +41,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class HistoryDataSource {
 	
 	private SQLiteDatabase mDatabase;
-	private HistoryOpenHelper mDbHelper;
+	private final HistoryOpenHelper mDbHelper;
 	
 	private static final int SUGGESTION_LIMIT = 6;
 	
@@ -63,22 +63,19 @@ public class HistoryDataSource {
 		String[] values = new String[] {
 				id < 0 ? null : String.valueOf(id),
 				realm, realm };
-		StringBuilder sqlBuilder = new StringBuilder();
+		String sql = "INSERT OR REPLACE INTO history ("
+			+ HistoryOpenHelper.COLUMN_ID + ", "
+			+ HistoryOpenHelper.COLUMN_REALM + ", "
+			+ HistoryOpenHelper.COLUMN_USAGE_COUNT + ", "
+			+ HistoryOpenHelper.COLUMN_LAST_ACCESS + ") "
+			+ "VALUES (?, ?, "
+			+ "(SELECT "
+			+ HistoryOpenHelper.COLUMN_USAGE_COUNT
+			+ " + 1 FROM history WHERE "
+			+ HistoryOpenHelper.COLUMN_REALM
+			+ " = ?), datetime('now'))";
 		
-		sqlBuilder
-			.append("INSERT OR REPLACE INTO history (")
-			.append(HistoryOpenHelper.COLUMN_ID).append(", ")
-			.append(HistoryOpenHelper.COLUMN_REALM).append(", ")
-			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT).append(", ")
-			.append(HistoryOpenHelper.COLUMN_LAST_ACCESS).append(") ")
-			.append("VALUES (?, ?, ")
-			.append("(SELECT ")
-			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT)
-			.append(" + 1 FROM history WHERE ")
-			.append(HistoryOpenHelper.COLUMN_REALM)
-			.append(" = ?), datetime('now'))");
-		
-		mDatabase.execSQL(sqlBuilder.toString(), values);
+		mDatabase.execSQL(sql, values);
 	}
 
 	public Cursor getHistoryCursor(String partialRealm) {
@@ -86,24 +83,21 @@ public class HistoryDataSource {
 		String selection = HistoryOpenHelper.COLUMN_REALM + " LIKE ?";
 		String[] selectionArgs = new String[] { "%" + partialRealm + "%" };
 		
-		StringBuilder orderBy = new StringBuilder()
-			.append(HistoryOpenHelper.COLUMN_USAGE_COUNT)
-			.append(" DESC, ")
-			.append(HistoryOpenHelper.COLUMN_LAST_ACCESS)
-			.append(" DESC");
+		String orderBy = HistoryOpenHelper.COLUMN_USAGE_COUNT
+			+ " DESC, "
+			+ HistoryOpenHelper.COLUMN_LAST_ACCESS
+			+ " DESC";
 		
 		String limit = String.valueOf(SUGGESTION_LIMIT);
 		
-		Cursor cursor = mDatabase.query(
+		return mDatabase.query(
 				HistoryOpenHelper.TABLE_HISTORY,
 				columns,
 				selection,
 				selectionArgs,
 				"", "",
-				orderBy.toString(),
+				orderBy,
 				limit);
-		
-		return cursor;
 	}
 	
 	private int getExistingEntryId(String realm) {
@@ -115,7 +109,9 @@ public class HistoryDataSource {
 		
 		if (cursor.moveToFirst()) {
 			int idColumn = cursor.getColumnIndex(HistoryOpenHelper.COLUMN_ID);
-			return cursor.getInt(idColumn);
+			int id = cursor.getInt(idColumn);
+			cursor.close();
+			return id;
 		}
 		else {
 			return -1;

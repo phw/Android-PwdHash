@@ -38,7 +38,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Preferences {
-	private SharedPreferences mSettings;
+	private final SharedPreferences mSettings;
 
 	public Preferences(Context packageContext) {
 		mSettings = packageContext.getSharedPreferences(
@@ -52,6 +52,6 @@ public class Preferences {
 	public void setSavedSiteAddress(String siteAddress) {
 		SharedPreferences.Editor editor = mSettings.edit();
 		editor.putString(Constants.PREFERENCE_SAVED_SITE_ADDRESS, siteAddress);
-		editor.commit();
+		editor.apply();
 	}
 }

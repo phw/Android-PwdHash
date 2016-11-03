@@ -70,7 +70,7 @@ public final class DomainExtractor {
 		return domain;
 	}
 
-	private static String[] mSecondLevelDomains = { "ab.ca", "ac.ac", "ac.at",
+	private final static String[] mSecondLevelDomains = { "ab.ca", "ac.ac", "ac.at",
 			"ac.be", "ac.cn", "ac.il", "ac.in", "ac.jp", "ac.kr", "ac.nz",
 			"ac.th", "ac.uk", "ac.za", "adm.br", "adv.br", "agro.pl", "ah.cn",
 			"aid.pl", "alt.za", "am.br", "arq.br", "art.br", "arts.ro",

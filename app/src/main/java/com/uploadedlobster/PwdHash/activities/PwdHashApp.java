@@ -164,8 +164,7 @@ public class PwdHashApp extends Activity {
 			public String convertToString(android.database.Cursor cursor) {
 				final int columnIndex = cursor
 						.getColumnIndexOrThrow(HistoryOpenHelper.COLUMN_REALM);
-				final String domain = cursor.getString(columnIndex);
-				return domain;
+				return cursor.getString(columnIndex);
 			}
 		});
 
@@ -175,8 +174,7 @@ public class PwdHashApp extends Activity {
 			public Cursor runQuery(CharSequence constraint) {
 				String partialInput = (constraint != null ? constraint
 						.toString() : "");
-				Cursor cursor = mHistory.getHistoryCursor(partialInput);
-				return cursor;
+				return mHistory.getHistoryCursor(partialInput);
 			}
 		});
 
@@ -259,7 +257,7 @@ public class PwdHashApp extends Activity {
 	}
 
 	@SuppressWarnings("deprecation")
-	protected void copyToClipboard(String hashedPassword) {
+	private void copyToClipboard(String hashedPassword) {
 		try {
 			// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
 			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);

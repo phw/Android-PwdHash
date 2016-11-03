@@ -16,7 +16,7 @@ public class DomainExtractorTest extends AndroidTestCase {
 
 	@Override
 	protected void setUp() throws Exception {
-		testSamples = new HashMap<String, String>();
+		testSamples = new HashMap<>();
 		testSamples.put("example.com", "example.com");
 		testSamples.put("http://example.com", "example.com");
 		testSamples.put("http://example.com/aPath/test.html", "example.com");

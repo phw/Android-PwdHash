@@ -61,8 +61,8 @@ public final class HashedPassword {
 	private static final String HMAC_MD5 = "HmacMD5";
 	private static final String PasswordPrefix = "@@";
 
-	private String mPassword;
-	private String mRealm;
+	private final String mPassword;
+	private final String mRealm;
 	private String mHash;
 	private Queue<Character> mExtras;
 
@@ -72,7 +72,7 @@ public final class HashedPassword {
 	 * characters. But since the JavaScript implementation of PwdHash only
 	 * considers ASCII characters we stay compatible.
 	 */
-	private static Pattern NonAlphanumericMatcher = Pattern
+	private final static Pattern NonAlphanumericMatcher = Pattern
 			.compile("[^a-zA-Z0-9_]");
 
 	private HashedPassword(String password, String realm) {
@@ -111,9 +111,8 @@ public final class HashedPassword {
 		byte[] keyBytes = encodeStringToBytes(key);
 		byte[] dataBytes = encodeStringToBytes(data);
 
-		Mac mac = null;
 		try {
-			mac = Mac.getInstance(HMAC_MD5);
+			Mac mac = Mac.getInstance(HMAC_MD5);
 			Key sk = new SecretKeySpec(keyBytes, HMAC_MD5);
 			mac.init(sk);
 			return mac.doFinal(dataBytes);
@@ -139,14 +138,14 @@ public final class HashedPassword {
 	 * implementation pwdhash.com and keeps the hash values of passwords
 	 * containing non-latin1 characters compatible.
 	 * 
-	 * @param data
+	 * @param data Input string
 	 * @return Byte array.
 	 */
 	private static byte[] encodeStringToBytes(String data) {
 		byte[] bytes = new byte[data.length()];
 
 		for (int i = 0; i < data.length(); i++) {
-			Integer codePoint = Integer.valueOf(data.codePointAt(i));
+			Integer codePoint = data.codePointAt(i);
 
 			if (codePoint <= 255)
 				bytes[i] = codePoint.byteValue();
@@ -176,7 +175,7 @@ public final class HashedPassword {
 			startingSize = hash.length();
 
 		String result = hash.substring(0, startingSize);
-		mExtras = new LinkedList<Character>();
+		mExtras = new LinkedList<>();
 		for (char c : hash.substring(startingSize).toCharArray()) {
 			mExtras.add(c);
 		}
@@ -214,7 +213,7 @@ public final class HashedPassword {
 	}
 
 	private char nextExtraChar() {
-		return (mExtras.size() > 0 ? mExtras.remove().charValue() : 0);
+		return (mExtras.size() > 0 ? mExtras.remove() : 0);
 	}
 
 	private static int between(int min, int interval, int offset) {
@@ -226,9 +225,9 @@ public final class HashedPassword {
 	}
 
 	private static String rotate(String s, int amount) {
-		Queue<Character> work = new LinkedList<Character>();
+		Queue<Character> work = new LinkedList<>();
 		for (char c : s.toCharArray()) {
-			work.add(Character.valueOf(c));
+			work.add(c);
 		}
 
 		while (amount-- > 0)
