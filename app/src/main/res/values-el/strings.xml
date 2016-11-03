@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Ελαφρύ εργαλείο για να δημιουργήσει ιστοσελίδα συγκεκριμένη, κλοπή ανθεκτικών κωδικών πρόσβασης. Απλά χρησιμοποιήστε την \"Κοινή χρήση σελίδας\" στο πρόγραμμα περιήγησης Android ή ανοιχτό Hash κωδικό άμεσα. Συμβατό με pwdhash.com
+
+Αυτή η εφαρμογή είναι δωρεάν λογισμικό δημοσιευμένο με άδεια ανοιχτού κώδικα.</string>
+  <string name="siteAddress">Διεύθυνση ιστοσελίδας</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">Κωδικός</string>
+  <string name="hashedPassword">Δίεση:</string>
+  <string name="copyBtn">Αντιγραφή</string>
+  <string name="copiedToClipboardNotification">Ο κωδικός αντιγράφεται στο πρόχειρο.</string>
+</resources>

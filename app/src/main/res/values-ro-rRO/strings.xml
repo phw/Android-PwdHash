@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Un instrument lejer pentru generarea de parole rezistente la fraude, şi specifice site-urilor web. Trebuie doar să folosiţi opţiunea \"Partajare pagină\" din browserul Android, sau deschideţi direct Password Hash. Compatibil cu pwdhash.com.\n\nAceastă aplicaţie este un program gratuit publicat sub licenţă open source.</string>
+  <string name="siteAddress">Adresa sitului</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">Parola</string>
+  <string name="hashedPassword">Hash:</string>
+  <string name="copyBtn">Copiere</string>
+  <string name="copiedToClipboardNotification">Parolă copiată în clipboard.</string>
+</resources>

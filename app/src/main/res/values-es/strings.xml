@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Herramienta ligera para generar contraseñas resistentes al robo, para sitios web específicos. Simplemente use la opción \"Compartir página\" en el navegador de Android, o directamente abra Password Hash. Compatible con pwdhash.com\n\nEsta aplicación es software libre publicado bajo una licencia de código abierto.</string>
+  <string name="siteAddress">Dirección del sitio</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">Contraseña</string>
+  <string name="hashedPassword">Hash:</string>
+  <string name="copyBtn">Copiar</string>
+  <string name="copiedToClipboardNotification">Contraseña copiada al portapapeles.</string>
+</resources>

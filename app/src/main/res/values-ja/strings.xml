@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">ウェブサイトを指定して、盗難耐性パスワードを生成する、軽量のツールです。Android のブラウザから \"ページを共有\" オプションを使用するだけです。Password Hash を直接開くこともできます。 pwdhash.com と互換性があります。
+
+このアプリはオープンソースライセンスで公開されるフリーソフトウェアです。</string>
+  <string name="siteAddress">サイトアドレス</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">パスワード</string>
+  <string name="hashedPassword">ハッシュ:</string>
+  <string name="copyBtn">コピー</string>
+  <string name="copiedToClipboardNotification">パスワードをクリップボードにコピーしました。</string>
+</resources>

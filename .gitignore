@@ -1,6 +1,11 @@
-bin/*
-gen/*
-tests/bin/*
-tests/gen/*
-*.bak
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+Thumbs.db
+build/
+/captures
+.externalNativeBuild
 *~

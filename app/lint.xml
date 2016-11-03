@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!-- Ignore warnings about unused RTL attributes in older Android versions -->
+    <issue id="RtlSymmetry">
+        <ignore path="res/layout/main.xml" />
+    </issue>
+    <issue id="UnusedAttribute" severity="ignore">
+        <ignore path="res/layout/main.xml" />
+    </issue>
+</lint>
