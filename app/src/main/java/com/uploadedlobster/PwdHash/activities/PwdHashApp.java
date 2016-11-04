@@ -34,6 +34,8 @@
 package com.uploadedlobster.PwdHash.activities;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -259,9 +261,16 @@ public class PwdHashApp extends Activity {
 	@SuppressWarnings("deprecation")
 	private void copyToClipboard(String hashedPassword) {
 		try {
-			// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
-			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-			clipboard.setText(hashedPassword);
+			if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+				ClipData clip = ClipData.newPlainText("", hashedPassword);
+				clipboard.setPrimaryClip(clip);
+			}
+			else {
+				// android.text.ClipboardManager is deprecated since API level 11, but we need it in order to be backward compatible.
+				android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+				clipboard.setText(hashedPassword);
+			}
 		}
 		catch (IllegalStateException e) {
 			// Workaround for some Android 4.3 devices, where writing to the clipboard manager raises an exception
