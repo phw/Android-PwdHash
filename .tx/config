@@ -3,8 +3,7 @@ host = https://www.transifex.com
 lang_map = nl_NL: nl-rNL, pt_BR: pt-rBR, ro_RO: ro-rRO, zh_CN: zh-rCN
 
 [Android_PwdHash.strings]
-file_filter = res/values-<lang>/strings.xml
-source_file = res/values/strings.xml
+file_filter = app/src/main/res/values-<lang>/strings.xml
+source_file = app/src/main/res/values/strings.xml
 source_lang = en
 type = ANDROID
-
