@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Password Hash</string>
-  <string name="app_description">Удобный инструмент для создания паролей, привязанных к конкретным сайтам, из одного мастер-пароля. Просто используйте опцию \"Отправить страницу\" в браузере или вручную введите данные в Password Hash. Полностью совместим с pwdhash.com.\n\nЭто приложение бесплатное и распространяется под открытой лицензией.</string>
+  <string name="app_description">Удобный инструмент для создания паролей, привязанных к конкретным сайтам, из одного мастер-пароля. Просто используйте опцию \"Отправить страницу\" в браузере или вручную введите данные в Password Hash. Полностью совместим с pwdhash.com.
+
+Это приложение бесплатное и распространяется под открытой лицензией.</string>
   <string name="siteAddress">Адрес сайта</string>
   <string name="siteAddressHint">http://example.com</string>
   <string name="password">Пароль</string>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Password Hash</string>
   <string name="app_description">Ελαφρύ εργαλείο για να δημιουργήσει ιστοσελίδα συγκεκριμένη, κλοπή ανθεκτικών κωδικών πρόσβασης. Απλά χρησιμοποιήστε την \"Κοινή χρήση σελίδας\" στο πρόγραμμα περιήγησης Android ή ανοιχτό Hash κωδικό άμεσα. Συμβατό με pwdhash.com

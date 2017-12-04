@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Password Hash</string>
-  <string name="app_description">Jednoduchý nástroj pro generování hesel odolných proti krádeži. Stačí použít možnost „Sdílet stránku“ v Android prohlížeči nebo přímo otevřít Password Hash. Kompatibilní s psdhash.com.\n\nTato aplikace je svobodný software publikovaný pod open source licencí.</string>
+  <string name="app_description">Jednoduchý nástroj pro generování hesel odolných proti krádeži. Stačí použít možnost „Sdílet stránku“ v Android prohlížeči nebo přímo otevřít Password Hash. Kompatibilní s psdhash.com.
+
+Tato aplikace je svobodný software publikovaný pod open source licencí.</string>
   <string name="siteAddress">Adresa stránky</string>
   <string name="siteAddressHint">http://example.com</string>
   <string name="password">Heslo</string>

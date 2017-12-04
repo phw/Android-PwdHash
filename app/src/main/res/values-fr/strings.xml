@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Mot de passe chiffré</string>
-  <string name="app_description">Utilitaire léger pour générer des mots de passe fiables contre les intrusions et spécifiques aux sites Web. Utiliser simplement l\'option «  Partager page » dans le navigateur Android ou ouvrir Mot de passe chiffré directement. Compatible avec pwdhash.com.\n\nCette appli est un logiciel gratuit publié sous licence « open source ».</string>
+  <string name="app_description">Utilitaire léger pour générer des mots de passe fiables contre les intrusions et spécifiques aux sites Web. Utiliser simplement l\'option «  Partager page » dans le navigateur Android ou ouvrir Mot de passe chiffré directement. Compatible avec pwdhash.com.
+
+Cette appli est un logiciel gratuit publié sous licence « open source ».</string>
   <string name="siteAddress">Adresse du site</string>
   <string name="siteAddressHint">http://exemple.com</string>
   <string name="password">Mot de passe</string>

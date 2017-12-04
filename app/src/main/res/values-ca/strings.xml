@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="app_name">Password Hash</string>
-  <string name="app_description">Aplicació per generar contrasenyes segures per llocs web. Feu servir \"Compartir\" al vostre navegador Android o obriu Password Hash directament. Compatible amb pwdhash.com.\n\nAplicación es distribueix lliurement sota llicencia open source.</string>
+  <string name="app_description">Aplicació per generar contrasenyes segures per llocs web. Feu servir \"Compartir\" al vostre navegador Android o obriu Password Hash directament. Compatible amb pwdhash.com.
+
+Aplicación es distribueix lliurement sota llicencia open source.</string>
   <string name="siteAddress">Lloc web </string>
   <string name="siteAddressHint">http://example.com</string>
   <string name="password">Password</string>
