@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="app_name">Password Hash</string>
+  <string name="app_description">Strumento leggero per generare password a prova di furto, specifiche per il web. Usa solo l\'opzione \"Condividi pagina\" nel tuo browser Android o apri direttamente Password Hash. Compatibile con pwdhash.com
+
+Questa app è software libero pubblicato sotto una licenza open source.</string>
+  <string name="siteAddress">Indirizzo del sito</string>
+  <string name="siteAddressHint">http://example.com</string>
+  <string name="password">Password</string>
+  <string name="hashedPassword">Hash:</string>
+  <string name="copyBtn">Copia</string>
+  <string name="copiedToClipboardNotification">Password copiata negli appunti.</string>
+</resources>
