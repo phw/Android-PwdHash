@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="app_name">Passordsjekksum</string>
+  <string name="app_description">Et lett verktøy for å generere nettsidespesifikke, tyverisikre passord. Trykk på \"Del side\" i Android-nettleseren eller åpne Passordsjekksum direkte. Kompatibelt med pwdhash.com.
+
+Dette programmet er publisert med en friprog-lisens.</string>
+  <string name="siteAddress">Sideadresse</string>
+  <string name="siteAddressHint">http://eksempel.no</string>
+  <string name="password">Passord</string>
+  <string name="hashedPassword">Sjekksum:</string>
+  <string name="copyBtn">Kopier</string>
+  <string name="copiedToClipboardNotification">Passord kopiert til utklippstavle.</string>
+</resources>
