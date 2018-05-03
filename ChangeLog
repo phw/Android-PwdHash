@@ -1,6 +1,11 @@
-2015-??-?? Philipp Wolfer <ph.wolfer@gmail.com>
+2018-05-03 Philipp Wolfer <ph.wolfer@gmail.com>
 	* Release 1.3.14
-	* Tested with Android 6
+	* Tested with Android 8.1
+	* Norwegian Bokmål translation (by Allan Nordhøy)
+	* Italian translation
+	* Use new clipboard API for Android API level >= 11
+	* Disable personalized keyboard learning on password input, if supported (Pedro Veloso)
+	* Migrated build to Android Studio
 
 2015-04-16 Philipp Wolfer <ph.wolfer@gmail.com>
 
