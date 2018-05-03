@@ -1,7 +1,11 @@
 package com.uploadedlobster.PwdHash;
 
+import android.support.test.runner.AndroidJUnit4;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import static org.junit.Assert.*;
 
 import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
@@ -12,11 +16,12 @@ import java.util.Map;
 /**
  * @author Philipp Wolfer
  */
+@RunWith(AndroidJUnit4.class)
 public class DomainExtractorTest {
 
 	private static HashMap<String, String> testSamples;
 
-    @Before
+	@Before
 	public void setUp() throws Exception {
 		testSamples = new HashMap<>();
 		testSamples.put("example.com", "example.com");
