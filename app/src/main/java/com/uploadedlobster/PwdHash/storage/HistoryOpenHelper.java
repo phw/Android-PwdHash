@@ -33,11 +33,11 @@
 
 package com.uploadedlobster.PwdHash.storage;
 
-import com.uploadedlobster.PwdHash.util.Constants;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.uploadedlobster.PwdHash.util.Constants;
 
 public class HistoryOpenHelper extends SQLiteOpenHelper {
 

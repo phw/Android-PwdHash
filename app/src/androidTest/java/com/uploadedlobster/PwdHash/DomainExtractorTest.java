@@ -2,16 +2,16 @@ package com.uploadedlobster.PwdHash;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
-
-import com.uploadedlobster.PwdHash.algorithm.DomainExtractor;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Philipp Wolfer

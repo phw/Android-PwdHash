@@ -33,6 +33,9 @@
 
 package com.uploadedlobster.PwdHash.algorithm;
 
+import android.util.Base64;
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -43,9 +46,6 @@ import java.util.regex.Pattern;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import android.util.Base64;
-import android.util.Log;
 
 /**
  * Hashed Password
