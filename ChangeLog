@@ -1,3 +1,8 @@
+2019-09-27 Philipp Wolfer <ph.wolfer@gmail.com>
+	* Release 1.3.15
+	* Tested with Android 9 and 10
+	* Passwords should be invisible to the accessibility services (mohammadnaseri)
+
 2018-05-03 Philipp Wolfer <ph.wolfer@gmail.com>
 	* Release 1.3.14
 	* Tested with Android 8.1
