@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Password Hash</string>
-	<string name="app_description">Lightweight tool to generate website specific, theft-resistant passwords. Just use the "Share page" option in the Android browser or open Password Hash directly. Compatible with pwdhash.com.
+    <string name="app_name">Password Hash</string>
+    <string name="app_description">Lightweight tool to generate website specific, theft-resistant passwords. Just use the "Share page" option in the Android browser or open Password Hash directly. Compatible with pwdhash.com.
 
 This app is free software published under an open source license.</string>
-	<string name="siteAddress">Site address</string>
-	<string name="siteAddressHint">http://example.com</string>
-	<string name="password">Password</string>
-	<string name="hashedPassword">Hash:</string>
-	<string name="copyBtn">Copy</string>
-	<string name="copiedToClipboardNotification">Password copied to clipboard.</string>
+    <string name="siteAddress">Site address</string>
+    <string name="siteAddressHint">http://example.com</string>
+    <string name="password">Password</string>
+    <string name="hashedPassword">Hash:</string>
+    <string name="copyBtn">Copy</string>
+    <string name="copiedToClipboardNotification">Password copied to clipboard</string>
 </resources>
