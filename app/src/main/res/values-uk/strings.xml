@@ -1,12 +1,12 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Password Hash</string>
-  <string name="app_description">Зручний інструмент для створення надійних паролів, прив\'язаних до конкретних сайтів. Просто використовуйте опцію \"Поділитись сторінкою\" в браузері або введіть дані прямо в Password Hash. Повністю сумісний з pwdhash.com. 
+    <string name="app_name">Password Hash</string>
+    <string name="app_description">Зручний інструмент для створення надійних паролів, прив\'язаних до конкретних сайтів. Просто використовуйте опцію \"Поділитись сторінкою\" в браузері або введіть дані прямо в Password Hash. Повністю сумісний з pwdhash.com. 
 Цей додаток безкоштовний і поширюється під відкритою ліцензією.</string>
-  <string name="siteAddress">Адреса сайту</string>
-  <string name="siteAddressHint">http://example.com</string>
-  <string name="password">Пароль</string>
-  <string name="hashedPassword">Хеш:</string>
-  <string name="copyBtn">Копіювати</string>
-  <string name="copiedToClipboardNotification">Пароль скопійований в буфер обміну.</string>
+    <string name="siteAddress">Адреса сайту</string>
+    <string name="siteAddressHint">http://example.com</string>
+    <string name="password">Пароль</string>
+    <string name="hashedPassword">Хеш:</string>
+    <string name="copyBtn">Копіювати</string>
+    <string name="copiedToClipboardNotification">Пароль скопійований в буфер обміну</string>
 </resources>
