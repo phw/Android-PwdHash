@@ -1,13 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Şifre Hash</string>
-  <string name="app_description">Özel web sitesi oluşturmak, hırsızlığa dayanıklı şifre yaratmak için hafif bir araçtır. Android tarayıcısında \'Paylaş\' butonunu kullanın veya Şifre Hash\'ı doğrudan açın. pwdhash.com ile uyumludur.
+    <string name="app_name">Şifre Hash</string>
+    <string name="app_description">Özel web sitesi oluşturmak, hırsızlığa dayanıklı şifre yaratmak için hafif bir araçtır. Android tarayıcısında \'Paylaş\' butonunu kullanın veya Şifre Hash\'ı doğrudan açın. pwdhash.com ile uyumludur.
 
 Bu uygulama açık kaynak lisansı altında yayınlanan ücretsiz bir yazılımdır.</string>
-  <string name="siteAddress">Site adresi</string>
-  <string name="siteAddressHint">http://ornek.com</string>
-  <string name="password">Şifre</string>
-  <string name="hashedPassword">Hash:</string>
-  <string name="copyBtn">Kopyala</string>
-  <string name="copiedToClipboardNotification">Şifre panoya kopyalandı.</string>
+    <string name="siteAddress">Site adresi</string>
+    <string name="siteAddressHint">http://ornek.com</string>
+    <string name="password">Şifre</string>
+    <string name="hashedPassword">Hash:</string>
+    <string name="copyBtn">Kopyala</string>
+    <string name="copiedToClipboardNotification">Şifre panoya kopyalandı</string>
 </resources>
