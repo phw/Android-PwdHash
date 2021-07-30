@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Wachtwoord hash</string>
-    <string name="app_description"/>
     <string name="siteAddress">Website adres</string>
     <string name="siteAddressHint">http://www.example.nl</string>
     <string name="password">Wachtwoord</string>

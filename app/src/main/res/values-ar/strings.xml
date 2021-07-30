@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Password Hash</string>
-    <string name="app_description"/>
     <string name="siteAddress">Site address</string>
     <string name="siteAddressHint">http://example.com</string>
     <string name="password">كلمة المرور</string>
     <string name="hashedPassword">Hash:</string>
     <string name="copyBtn">نسخ</string>
-    <string name="copiedToClipboardNotification"></string>
 </resources>
